@@ -42,13 +42,14 @@ def printHW():
 globalArrayNum = []
 with ThreadPoolExecutor(max_workers= 2) as executor:
     inicio = 1
-    hilos = 5
+    hilos = 4
     fin = 200
     #subrango = 200//5
     subrango = fin // hilos
-    for i in range (inicio, subrango, 50):
-        executor.submit(contadorDos,inicio,fin)
-        i+49
+    for i in range (inicio, hilos+1,1):
+        intento = subrango * i
+        executor.submit(contadorDos,inicio,intento)
+        inicio = subrango + inicio
 
         
         
